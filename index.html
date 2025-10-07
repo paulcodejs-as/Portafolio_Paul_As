@@ -29,6 +29,25 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="css/index.css" />
+  <style>
+    /* NAVBAR - Always visible */
+    .navbar{
+      background:var(--navbar-bg);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+      box-shadow:0 4px 30px var(--shadow);
+      z-index:1030;
+      transition:all .3s ease;
+      position:sticky;
+      top:0;
+    }
+    .navbar.scrolled{
+      padding-top:.5rem;
+      padding-bottom:.5rem;
+      box-shadow:0 8px 40px var(--shadow);
+      background:var(--navbar-bg);
+    }
+  </style>
 </head>
 
   <body
