@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <!-- ===================== META BÁSICA ===================== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paul_As — Ingeniero de Sistemas | Portafolio</title>
+  <meta name="description" content="Portafolio profesional de Paul_As (Paul Neder Quispe Salazar). Desarrollo de aplicaciones web modernas, seguras y escalables con .NET, React, Node.js, Blazor y más." />
+  <meta name="keywords" content="Paul_As, Paul Neder, portafolio, ingeniero de sistemas, desarrollador web, full stack, .NET, React, Node.js, Blazor, Perú, PNP" />
+  <meta name="author" content="Paul Neder Quispe Salazar" />
+  <link rel="icon" href="img/sparkCode.png" type="image/png" />
+
+  <!-- ===================== SEO AVANZADO ===================== -->
+  <meta property="og:title" content="Paul_As — Ingeniero de Sistemas | Portafolio" />
+  <meta property="og:description" content="Full-stack dev. Creo soluciones modernas para la PNP y organizaciones innovadoras." />
+  <meta property="og:image" content="img/paulAs.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_PE" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)" />
+
+  <!-- JSON-LD Person -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Paul Neder Quispe Salazar",
+    "alternateName":"Paul_As",
+    "jobTitle":"Ingeniero de Sistemas e Informática",
+    "url":"https://tu-dominio-o-github-pages",
+    "image":"img/paulAs.jpg",
+    "knowsAbout":[".NET","Blazor","C#","React","Node.js","SQL Server","Docker","Keycloak"],
+    "sameAs":[
+      "https://github.com/paulcodejs-as",
+      "https://www.linkedin.com/in/paul-neder-quispe-salazar-2747b21a0/"
+    ]
+  }
+  </script>
+
+  <!-- ===================== LIBRERÍAS ===================== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- ===================== ESTILOS ===================== -->
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg-soft:#f6f7fb;
+      --text:#1b1f2a;
+      --muted:#5c6787;
+      --border:#e6e8f0;
+      --shadow:rgba(2,12,27,.08);
+      --card: #ffffff;
+      --accent:#2262c6;             /* cambias con los botones de color */
+      --accent-50: color-mix(in oklab, var(--accent) 12%, transparent);
+      --radius:1.25rem;
+      --glass:rgba(255,255,255,.6);
+      --glass-border:rgba(255,255,255,.5);
+    }
+    [data-bs-theme="dark"]{
+      --bg:#0b1020;
+      --bg-soft:#0f1528;
+      --text:#e9edf8;
+      --muted:#aab3d1;
+      --border:#1c2340;
+      --shadow:rgba(0,0,0,.35);
+      --card:#0f1528;
+      --glass:rgba(13,19,41,.5);
+      --glass-border:rgba(255,255,255,.08);
+    }
+    html,body{background:var(--bg);color:var(--text)}
+    .gradient-text{background:linear-gradient(90deg,var(--accent),#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .nav-glass{
+      background:var(--glass);
+      backdrop-filter:saturate(120%) blur(14px);
+      border-bottom:1px solid var(--glass-border);
+      transition:all .25s ease;
+    }
+    .nav-link{font-weight:600}
+    .nav-link.active, .nav-link:focus, .nav-link:hover{color:var(--accent) !important}
+    .btn-gradient{
+      --c1:var(--accent); --c2:#7c3aed;
+      background:linear-gradient(90deg,var(--c1),var(--c2));
+      color:#fff; border:0; box-shadow:0 10px 24px var(--accent-50)
+    }
+    .btn-gradient:hover{opacity:.95;color:#fff}
+    .btn-outline-primary{border-color:var(--accent);color:var(--accent)}
+    .btn-outline-primary:hover{background:var(--accent);color:#fff}
+
+    .badge-tech{background:var(--accent-50);color:var(--accent);border:1px solid color-mix(in oklab, var(--accent) 30%, transparent);padding:.35rem .6rem;border-radius:999px;font-weight:600}
+
+    /* ============ HERO (designer <> coder) ============ */
+    .hero{
+      position:relative; overflow:hidden;
+      border-radius: calc(var(--radius) * 1.3);
+      background:linear-gradient(180deg, var(--bg-soft), transparent);
+    }
+    .hero-split{
+      position:relative; isolation:isolate;
+      min-height: 520px;
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:2rem;
+      align-items:center;
+    }
+    .hero-figure{
+      position:relative; display:grid; place-items:center;
+    }
+    .split-art{
+      position:relative; width:min(560px,96%); aspect-ratio: 1/1.05;
+      border-radius:calc(var(--radius) * 1.1);
+      overflow:hidden; box-shadow:0 20px 50px var(--shadow);
+      background: var(--card);
+    }
+    .split-art img{width:100%; height:100%; object-fit:cover; filter:saturate(1.05)}
+    .split-art::before,
+    .split-art::after{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      mix-blend-mode:multiply;
+    }
+    .split-art::before{
+      background:linear-gradient(90deg, color-mix(in oklab, var(--accent) 55%, transparent), transparent 45%);
+      clip-path:polygon(0 0,50% 0,50% 100%,0 100%);
+      opacity:.6;
+    }
+    .split-art::after{
+      background:radial-gradient(60% 80% at 70% 50%, rgba(124,58,237,.18), transparent 60%),
+                 linear-gradient(180deg, transparent, rgba(0,0,0,.20));
+    }
+    .hero-label{letter-spacing:.12em;color:var(--muted);font-weight:700}
+    .hero-title{font-size: clamp(2.2rem, 4vw + .6rem, 4rem); font-weight:800}
+    .hero-sub{color:var(--muted)}
+    .stats-number{font: 800 clamp(1.6rem, 2.5vw + .5rem, 2.4rem) / 1 var(--bs-body-font-family)}
+
+    /* Cards base */
+    .card{
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--radius); box-shadow:0 10px 30px var(--shadow);
+    }
+    .card-cover{transition: transform .6s cubic-bezier(.2,.8,.2,1)}
+    .card:hover .card-cover{transform: scale(1.05)}
+    .shadow-soft{box-shadow:0 6px 18px var(--shadow)}
+
+    /* Timeline experiencia */
+    .timeline {position:relative;padding-left:1.5rem}
+    .timeline::before{content:"";position:absolute;left:.5rem;top:.25rem;bottom:.25rem;width:2px;background:var(--border)}
+    .timeline .item{position:relative;padding-left:1.25rem;margin-bottom:1.2rem}
+    .timeline .item::before{
+      content:"";position:absolute;left:-.05rem;top:.35rem;width:.75rem;height:.75rem;border-radius:50%;
+      background:var(--accent); box-shadow:0 0 0 4px var(--accent-50);
+    }
+
+    /* Contacto / iconos */
+    .skill-icon{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;background:var(--bg-soft);color:var(--accent)}
+    .contact-card{border:1px dashed var(--border);border-radius:var(--radius);padding:1.25rem;background:var(--bg-soft)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border)}
+    .social-icon{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);color:var(--text)}
+    .social-icon:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* Botón scroll-to-top con progreso */
+    .to-top{
+      position:fixed; right:20px; bottom:20px; width:48px; height:48px; border-radius:50%;
+      background: var(--card); border:1px solid var(--border); display:grid;place-items:center; z-index:1050;
+      box-shadow:0 10px 24px var(--shadow);
+    }
+    .to-top svg{transform: rotate(-90deg)}
+    .to-top[hidden]{display:none}
+
+    /* Accesibilidad/animaciones */
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important; animation:none !important}
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
+
+  <!-- ===================== NAV ===================== -->
+  <nav id="mainNav" class="navbar navbar-expand-lg nav-glass sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#inicio" aria-label="Ir al inicio">
+        Paul_As<span class="gradient-text">.</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link px-3" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#habilidades">Habilidades</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#experiencia">Experiencia</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#sobre-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="#contacto">Contacto</a></li>
+          <!-- Toggle -->
+          <li class="nav-item d-flex align-items-center ms-lg-2">
+            <button id="modeBtn" class="btn btn-sm btn-outline-primary" type="button" title="Cambiar tema" aria-label="Cambiar tema">
+              <i class="bi bi-moon-stars"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header id="inicio" class="container py-5">
+    <div class="hero p-4 p-lg-5 shadow-soft">
+      <div class="hero-split">
+        <div>
+          <div class="mb-3"><span class="badge badge-tech">Disponible para trabajar 🚀</span></div>
+          <p class="hero-label text-uppercase mb-2">Ingeniero de Sistemas e Informática</p>
+          <h1 class="hero-title mb-3">
+            <span class="gradient-text">designer</span>
+            <span class="text-secondary"> ⟷ </span>
+            <span class="gradient-text">&lt;coder&gt;</span>
+          </h1>
+          <p class="hero-sub lead mb-4">
+            +5 años creando aplicaciones web modernas, seguras y escalables para la
+            <strong>Policía Nacional del Perú</strong> y organizaciones innovadoras. Enfoque en
+            arquitectura limpia, UX y performance.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#contacto" class="btn btn-gradient btn-lg px-4"><i class="bi bi-envelope me-2"></i>Contáctame</a>
+            <a href="#proyectos" class="btn btn-outline-primary btn-lg px-4"><i class="bi bi-code-slash me-2"></i>Ver proyectos</a>
+          </div>
+          <div class="d-flex gap-3 mt-4">
+            <a class="social-icon" href="https://www.linkedin.com/in/paul-neder-quispe-salazar-2747b21a0/" target="_blank" rel="noopener" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a class="social-icon" href="https://github.com/paulcodejs-as" target="_blank" rel="noopener" title="GitHub"><i class="bi bi-github"></i></a>
+            <a class="social-icon" href="mailto:paulcodejs@gmail.com" title="Email"><i class="bi bi-envelope"></i></a>
+          </div>
+
+          <!-- Stats -->
+          <div class="row g-4 mt-4">
+            <div class="col-6 col-md-3 text-center">
+              <div class="stats-number">5+</div><div class="text-secondary">Años exp.</div>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+              <div class="stats-number">15+</div><div class="text-secondary">Proyectos</div>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+              <div class="stats-number">8+</div><div class="text-secondary">Tecnologías</div>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+              <div class="stats-number">100%</div><div class="text-secondary">Dedicación</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-figure">
+          <figure class="split-art" aria-label="Ilustración Designer/Coder">
+            <img src="img/paulAs.jpg" alt="Paul_As" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== PROYECTOS ===================== -->
+  <section id="proyectos" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-6 fw-bold"><i class="bi bi-code-slash me-2"></i>Proyectos destacados</h2>
+      <p class="text-secondary">Aplicaciones recientes con foco en calidad, seguridad y DX.</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Reutilizo tus 6 tarjetas (mejoradas) -->
+      <!-- 1 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100 overflow-hidden border-0">
+          <div class="ratio ratio-16x9"><img class="card-cover" src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?q=80&w=1200&auto=format&fit=crop" alt="Cuality Team" /></div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="h5 fw-bold mb-2">Cuality Team</h3>
+            <p class="text-secondary flex-grow-1">Biblioteca virtual tipo Steam. Rutas protegidas, búsqueda y colecciones.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge badge-tech">Tailwind</span><span class="badge badge-tech">Astro</span><span class="badge badge-tech">Node.js</span><span class="badge badge-tech">MongoDB</span>
+            </div>
+            <div class="d-flex gap-2">
+              <a class="btn btn-outline-primary btn-sm w-50" href="#"><i class="bi bi-eye me-1"></i>Demo</a>
+              <a class="btn btn-outline-secondary btn-sm w-50" href="#"><i class="bi bi-github me-1"></i>Código</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 2 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100 overflow-hidden border-0">
+          <div class="ratio ratio-16x9"><img class="card-cover" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop" alt="LimecBooks" /></div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="h5 fw-bold mb-2">LimecBooks</h3>
+            <p class="text-secondary flex-grow-1">Recomendador de libros con reseñas y listas compartidas.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge badge-tech">React</span><span class="badge badge-tech">Tailwind</span><span class="badge badge-tech">Node.js</span><span class="badge badge-tech">MongoDB</span>
+            </div>
+            <div class="d-flex gap-2">
+              <a class="btn btn-outline-primary btn-sm w-50" href="#"><i class="bi bi-eye me-1"></i>Demo</a>
+              <a class="btn btn-outline-secondary btn-sm w-50" href="#"><i class="bi bi-github me-1"></i>Código</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 3 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100 overflow-hidden border-0">
+          <div class="ratio ratio-16x9"><img class="card-cover" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="Dashboard Analytics" /></div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="h5 fw-bold mb-2">Dashboard Analytics</h3>
+            <p class="text-secondary flex-grow-1">Métricas en tiempo real con Web API segura y caching.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge badge-tech">React</span><span class="badge badge-tech">Chart.js</span><span class="badge badge-tech">Express</span><span class="badge badge-tech">PostgreSQL</span>
+            </div>
+            <div class="d-flex gap-2">
+              <a class="btn btn-outline-primary btn-sm w-50" href="#"><i class="bi bi-eye me-1"></i>Demo</a>
+              <a class="btn btn-outline-secondary btn-sm w-50" href="#"><i class="bi bi-github me-1"></i>Código</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 4 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100 overflow-hidden border-0">
+          <div class="ratio ratio-16x9"><img class="card-cover" src="https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1200&auto=format&fit=crop" alt="Shop Online" /></div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="h5 fw-bold mb-2">Shop Online</h3>
+            <p class="text-secondary flex-grow-1">E-commerce con Stripe, SSR y panel de productos.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge badge-tech">Next.js</span><span class="badge badge-tech">Stripe</span><span class="badge badge-tech">Prisma</span><span class="badge badge-tech">MySQL</span>
+            </div>
+            <div class="d-flex gap-2">
+              <a class="btn btn-outline-primary btn-sm w-50" href="#"><i class="bi bi-eye me-1"></i>Demo</a>
+              <a class="btn btn-outline-secondary btn-sm w-50" href="#"><i class="bi bi-github me-1"></i>Código</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 5 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100 overflow-hidden border-0">
+          <div class="ratio ratio-16x9"><img class="card-cover" src="https://images.unsplash.com/photo-1611224885990-ab7363d1f2b2?q=80&w=1200&auto=format&fit=crop" alt="Blog Platform" /></div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="h5 fw-bold mb-2">Blog Platform</h3>
+            <p class="text-secondary flex-grow-1">CMS ligero con SEO, Markdown y Auth.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge badge-tech">Nuxt</span><span class="badge badge-tech">Vue</span><span class="badge badge-tech">Firebase</span><span class="badge badge-tech">Markdown</span>
+            </div>
+            <div class="d-flex gap-2">
+              <a class="btn btn-outline-primary btn-sm w-50" href="#"><i class="bi bi-eye me-1"></i>Demo</a>
+              <a class="btn btn-outline-secondary btn-sm w-50" href="#"><i class="bi bi-github me-1"></i>Código</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 6 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100 overflow-hidden border-0">
+          <div class="ratio ratio-16x9"><img class="card-cover" src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=1200&auto=format&fit=crop" alt="Task Manager Pro" /></div>
+          <div class="card-body d-flex flex-column">
+            <h3 class="h5 fw-bold mb-2">Task Manager Pro</h3>
+            <p class="text-secondary flex-grow-1">Kanban colaborativo con sockets y notificaciones.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge badge-tech">React</span><span class="badge badge-tech">Socket.io</span><span class="badge badge-tech">Redis</span><span class="badge badge-tech">Docker</span>
+            </div>
+            <div class="d-flex gap-2">
+              <a class="btn btn-outline-primary btn-sm w-50" href="#"><i class="bi bi-eye me-1"></i>Demo</a>
+              <a class="btn btn-outline-secondary btn-sm w-50" href="#"><i class="bi bi-github me-1"></i>Código</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="#" class="btn btn-outline-primary btn-lg">Ver todos los proyectos <i class="bi bi-arrow-right ms-2"></i></a>
+    </div>
+  </section>
+
+  <!-- ===================== HABILIDADES ===================== -->
+  <section id="habilidades" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-6 fw-bold"><i class="bi bi-stars me-2"></i>Habilidades técnicas</h2>
+      <p class="text-secondary">Stack con el que trabajo día a día.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card p-4 text-center">
+          <div class="skill-icon mx-auto mb-3"><i class="bi bi-code-square fs-4"></i></div>
+          <h3 class="h5 fw-bold mb-2">Frontend</h3>
+          <p class="text-secondary small">Interfaces modernas y accesibles</p>
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <span class="badge badge-tech">React</span><span class="badge badge-tech">Vue</span><span class="badge badge-tech">Tailwind</span><span class="badge badge-tech">TypeScript</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card p-4 text-center">
+          <div class="skill-icon mx-auto mb-3"><i class="bi bi-server fs-4"></i></div>
+          <h3 class="h5 fw-bold mb-2">Backend</h3>
+          <p class="text-secondary small">APIs robustas y escalables</p>
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <span class="badge badge-tech">.NET</span><span class="badge badge-tech">Node.js</span><span class="badge badge-tech">Express</span><span class="badge badge-tech">Django</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card p-4 text-center">
+          <div class="skill-icon mx-auto mb-3"><i class="bi bi-database fs-4"></i></div>
+          <h3 class="h5 fw-bold mb-2">Bases de datos</h3>
+          <p class="text-secondary small">Modelado, performance y seguridad</p>
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <span class="badge badge-tech">SQL Server</span><span class="badge badge-tech">PostgreSQL</span><span class="badge badge-tech">MySQL</span><span class="badge badge-tech">MongoDB</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card p-4 text-center">
+          <div class="skill-icon mx-auto mb-3"><i class="bi bi-tools fs-4"></i></div>
+          <h3 class="h5 fw-bold mb-2">Herramientas</h3>
+          <p class="text-secondary small">DevOps y despliegue</p>
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <span class="badge badge-tech">Git</span><span class="badge badge-tech">Docker</span><span class="badge badge-tech">Keycloak</span><span class="badge badge-tech">AWS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCIA ===================== -->
+  <section id="experiencia" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-6 fw-bold"><i class="bi bi-briefcase me-2"></i>Experiencia profesional</h2>
+      <p class="text-secondary">Trayectoria en desarrollo y transformación digital.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="timeline">
+          <div class="item">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h3 class="h5 fw-bold mb-1">Programador Web — Policía Nacional del Perú</h3>
+                <p class="text-primary mb-2">DIRIN PNP (2023 – 2025)</p>
+              </div>
+              <span class="badge bg-secondary">Actual</span>
+            </div>
+            <ul class="text-secondary mb-3">
+              <li>Sistemas institucionales (.NET/React/SQL Server) con autenticación Keycloak.</li>
+              <li>Optimización de rendimiento y seguridad (OWASP, JWT “solo lo necesario”).</li>
+              <li>Despliegues automatizados y observabilidad.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h3 class="h6 fw-bold mb-1">Auxiliar de Procesador — División de Seguridad Digital (2020 – 2023)</h3>
+            <ul class="text-secondary">
+              <li>Procesamiento y análisis de información digital.</li>
+              <li>Soporte a sistemas de seguridad y gestión documental.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h3 class="h6 fw-bold mb-1">Analista Táctico — PNP (2017 – 2019)</h3>
+            <ul class="text-secondary">
+              <li>Informes operativos y coordinación con equipos multidisciplinarios.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOBRE MÍ ===================== -->
+  <section id="sobre-mi" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-6 fw-bold"><i class="bi bi-person-circle me-2"></i>Sobre mí</h2>
+      <p class="text-secondary">Un poco de mi historia y enfoque.</p>
+    </div>
+
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <div class="p-3 p-lg-4 rounded-4" style="background:var(--bg-soft)">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" class="img-fluid rounded-4 shadow-soft" alt="Workspace">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="h4 fw-bold mb-3">¡Hola! Soy Paul 👨‍💻</h3>
+        <p class="text-secondary">Estudiante de último ciclo de Ingeniería de Sistemas e Informática y desarrollador full-stack. Me apasiona convertir ideas en productos con **código limpio**, arquitectura sólida y excelente UX.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge bg-primary-subtle text-primary-emphasis">💻 Clean Code</span>
+          <span class="badge bg-primary-subtle text-primary-emphasis">🚀 Performance</span>
+          <span class="badge bg-primary-subtle text-primary-emphasis">🎨 UX/UI</span>
+          <span class="badge bg-primary-subtle text-primary-emphasis">🔐 Seguridad</span>
+          <span class="badge bg-primary-subtle text-primary-emphasis">📱 Responsive</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section id="contacto" class="container py-5">
+    <div class="text-center mb-5">
+      <h2 class="display-6 fw-bold"><i class="bi bi-envelope me-2"></i>Contacto</h2>
+      <p class="text-secondary">¿Tienes un proyecto? Hablemos.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="contact-card h-100 text-center">
+          <div class="skill-icon mx-auto mb-3"><i class="bi bi-envelope-fill fs-5"></i></div>
+          <h3 class="h6 fw-bold mb-2">Email</h3>
+          <a href="mailto:paulcodejs@gmail.com" class="text-decoration-none">paulcodejs@gmail.com</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card h-100 text-center">
+          <div class="skill-icon mx-auto mb-3"><i class="bi bi-linkedin fs-5"></i></div>
+          <h3 class="h6 fw-bold mb-2">LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/paul-neder-quispe-salazar-2747b21a0/" target="_blank" class="text-decoration-none">PAUL NEDER</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card h-100 text-center">
+          <div class="skill-icon mx-auto mb-3"><i class="bi bi-github fs-5"></i></div>
+          <h3 class="h6 fw-bold mb-2">GitHub</h3>
+          <a href="https://github.com/paulcodejs-as" target="_blank" class="text-decoration-none">paulcodejs-as</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-6">
+        <div class="card p-4">
+          <h3 class="h5 fw-bold text-center mb-3">Envíame un mensaje</h3>
+          <form action="https://formspree.io/f/your-id" method="POST">
+            <div class="mb-3">
+              <label class="form-label" for="name">Nombre</label>
+              <input id="name" name="name" type="text" class="form-control" placeholder="Tu nombre" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="email">Email</label>
+              <input id="email" name="_replyto" type="email" class="form-control" placeholder="tu@email.com" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="msg">Mensaje</label>
+              <textarea id="msg" name="message" class="form-control" rows="4" placeholder="Cuéntame sobre tu proyecto…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-gradient w-100">Enviar <i class="bi bi-send ms-2"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="container py-5">
+    <div class="row align-items-center gy-4">
+      <div class="col-md-6 text-center text-md-start">
+        <h5 class="fw-bold mb-2 gradient-text">Paul_As</h5>
+        <p class="mb-1 text-secondary">Ingeniero de Sistemas e Informática | Desarrollador Full-Stack</p>
+        <p class="small text-secondary mb-0">Soluciones digitales para la transformación tecnológica 🇵🇪</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <div class="d-inline-flex gap-2 flex-wrap">
+          <a href="https://www.linkedin.com/in/paul-neder-quispe-salazar-2747b21a0/" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill">
+            <i class="bi bi-linkedin me-1"></i> LinkedIn
+          </a>
+          <a href="https://github.com/paulcodejs-as" target="_blank" class="btn btn-outline-dark btn-sm rounded-pill">
+            <i class="bi bi-github me-1"></i> GitHub
+          </a>
+          <a href="mailto:paulcodejs@gmail.com" class="btn btn-outline-danger btn-sm rounded-pill">
+            <i class="bi bi-envelope me-1"></i> Email
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4" />
+    <div class="text-center small text-secondary">
+      © <span id="year"></span> Paul_As. Hecho con <i class="bi bi-heart-fill text-danger"></i>,
+      <i class="bi bi-code-slash text-primary"></i> y mucho ☕ desde Lima, Perú.
+    </div>
+  </footer>
+
+  <!-- ===================== CONTROL FLOtANTE ===================== -->
+  <button id="toTop" class="to-top" hidden aria-label="Volver arriba">
+    <!-- círculo de progreso -->
+    <svg width="28" height="28" viewBox="0 0 36 36" aria-hidden="true">
+      <path d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32" stroke="var(--border)" stroke-width="2" fill="none"/>
+      <path id="progress" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="100" stroke-dashoffset="100"/>
+    </svg>
+    <i class="bi bi-arrow-up-short position-absolute"></i>
+  </button>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ===== Utilidades =====
+    const $ = (s, c=document) => c.querySelector(s);
+    // Modo guardado
+    const storedMode = localStorage.getItem('theme');
+    if(storedMode){ document.documentElement.setAttribute('data-bs-theme', storedMode); }
+
+    // Toggle tema
+    $('#modeBtn').addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-bs-theme', current);
+      localStorage.setItem('theme', current);
+    });
+
+    // Año dinámico
+    $('#year').textContent = new Date().getFullYear();
+
+    // Nav activa (Scrollspy ya hace la magia; esto solo mejora sombreado al hacer scroll)
+    const nav = $('#mainNav');
+    const onScroll = () => {
+      const scrolled = window.scrollY > 10;
+      nav.classList.toggle('shadow-sm', scrolled);
+    };
+    document.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+    // Botón top + progreso
+    const toTop = $('#toTop'), path = $('#progress');
+    const len = 100; // usamos stroke-dasharray=100 para fácil
+    const updateProgress = () => {
+      const sH = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = sH ? (window.scrollY / sH) : 0;
+      path.style.strokeDashoffset = (len - (pct * len)).toFixed(2);
+      toTop.hidden = window.scrollY < 240;
+    };
+    document.addEventListener('scroll', updateProgress, {passive:true}); updateProgress();
+    toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Mejora accesibilidad: focus visible en teclado
+    document.body.addEventListener('keydown', (e) => {
+      if(e.key === 'Tab') document.body.classList.add('using-keyboard');
+    }, {once:true});
+  </script>
+</body>
+</html>
